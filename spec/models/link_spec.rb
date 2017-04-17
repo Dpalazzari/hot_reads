@@ -12,12 +12,4 @@ RSpec.describe Link, type: :model do
       expect(link).to be_valid
     end
   end
-
-  context '#top_ten' do
-    xscenario 'returns the top ten links' do
-      create_list(:link, 10)
-      link_collection = Link.top_ten
-      expect(link_collection.count).to eq(10)
-    end
-  end
 end
