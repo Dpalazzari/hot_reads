@@ -1,0 +1,5 @@
+"Welcome to Hot reads!"
+
+<% @top_ten.each do |link| %>
+  <%= link_to link.url, link.url %>
+<% end %>
