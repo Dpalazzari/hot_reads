@@ -20,7 +20,21 @@ RSpec.describe 'Post link request', type: :request do
       post "/api/v1/links", posted_link
       expect(response).to be_success
       raw_link = JSON.parse(response.body)
+      @link.reload
+      expect(@link.times_read).to eq(1)
       expect(raw_link['times_read']).to eq(1)
+    end
+
+    it 'returns json of an already created link with updated times_read = 1' do
+      link = Link.create(url: 'https://www.github.com', times_read: 1)
+      expect(link.times_read).to eq(1)
+      posted_link = { url: 'https://www.github.com' }.to_json
+      post "/api/v1/links", posted_link
+      expect(response).to be_success
+      raw_link = JSON.parse(response.body)
+      link.reload
+      expect(link.times_read).to eq(2)
+      expect(raw_link['times_read']).to eq(2)
     end
   end
 end
