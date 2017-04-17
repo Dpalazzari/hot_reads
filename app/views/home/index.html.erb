@@ -3,5 +3,7 @@
 
 <h3>Top Ten Links</h3>
 <% @top_ten.each do |link| %>
-  <%= link_to link.url, link.url %>
+  <ul>
+    <li><%= link_to link.url, link.url %></li>
+  </ul>
 <% end %>
