@@ -2,8 +2,8 @@
 
 
 <h3>Top Ten Links</h3>
+<ul>
 <% @top_ten.each do |link| %>
-  <ul>
     <li><%= link_to link.url, link.url %></li>
-  </ul>
 <% end %>
+</ul>
